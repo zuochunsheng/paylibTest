@@ -1,6 +1,6 @@
 # paylibTest
 
-  ####先build 一个PayHelper 对象
+  先build 一个PayHelper 对象
   PayHelper payHelper = new PayHelper.Builder()
                 .setPayMethod(payWay)
                 .setSubject(subject)
@@ -10,7 +10,7 @@
                 .setSeller_id(sellerId)
                 .build();
 
-   ####调用doPay 开启支付,回调方法中返回支付结果
+   调用doPay 开启支付,回调方法中返回支付结果
     //payHelper.checkPermissions();
     payHelper.doPay(this,new PayResultCallback() {
         @Override
