@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.huican.pay"
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+        multiDexEnabled true
+    }
+
+    //debug和正式打包签名信息
+//    signingConfigs {
+//        debug {
+//            storeFile file("keystore.jks")
+//            storePassword STORE_PASSWORD
+//            keyAlias KEY_ALIAS
+//            keyPassword KEY_PASSWORD
+//        }
+//        release {
+//            storeFile file("keystore.jks")
+//            storePassword STORE_PASSWORD
+//            keyAlias KEY_ALIAS
+//            keyPassword KEY_PASSWORD
+//
+//        }
+//    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+
+
+    implementation files('libs/payLibrary.aar')
+
+    /*================*/
+    /* Retrofit */
+    implementation 'com.squareup.retrofit2:retrofit:+'
+    implementation 'com.squareup.retrofit2:converter-gson:+'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:+'
+    /* RxJava or RxAndroid */
+    implementation 'io.reactivex.rxjava2:rxandroid:+'
+    implementation 'io.reactivex.rxjava2:rxjava:+'
+
+    implementation 'com.android.support:multidex:1.0.1'
+    //permission
+    implementation 'com.yanzhenjie:permission:2.0.0-rc12'
+
+    // 支付宝AAR  hk
+    implementation files('libs/alipaySdk-15.5.9-20181123210601.aar')
+    // weichat
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+
+
+}

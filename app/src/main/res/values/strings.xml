@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">sdkdemoTest</string>
+
+    <string name="permission_rejected">Missing permissions. Please grant required permissions in system settings</string>
+    <string name="confirm">Confirm</string>
+
+</resources>

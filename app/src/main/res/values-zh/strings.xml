@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">sdkdemoTest</string>
+
+
+    <string name="permission_rejected">无法获取所需的权限, 请到系统设置开启</string>
+    <string name="confirm">确认</string>
+
+</resources>

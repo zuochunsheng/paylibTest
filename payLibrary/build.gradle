@@ -1,0 +1,100 @@
+apply plugin: 'com.android.library'
+
+
+//repositories {
+//    jcenter()
+//
+//    flatDir{
+//        dirs 'libs'
+//
+//    }
+//}
+
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+
+    signingConfigs {
+
+        debug {
+            keyAlias 'huicanpay'
+            keyPassword 'huican20190509'
+            storeFile file('PayKey_Debug.jks')
+            storePassword 'huican20190509'
+        }
+        release {
+            keyAlias 'huicanpay'
+            keyPassword 'huican20190606'
+            storeFile file('PayKey.jks')
+            storePassword 'huican20190606'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    lintOptions {
+        abortOnError false
+    }
+
+    //指定源文件
+    packagingOptions {
+        exclude 'META-INF/*'
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+
+    /* Retrofit */
+    api 'com.squareup.retrofit2:retrofit:+'
+    api 'com.squareup.retrofit2:converter-gson:+'
+    api 'com.squareup.retrofit2:adapter-rxjava2:+'
+    /* RxJava or RxAndroid */
+    api 'io.reactivex.rxjava2:rxandroid:+'
+    api 'io.reactivex.rxjava2:rxjava:+'
+
+    api 'com.android.support:multidex:1.0.1'
+    //permission
+    api 'com.yanzhenjie:permission:2.0.0-rc12'
+
+    // 支付宝AAR  hk
+    api files('libs/alipaySdk-15.5.9-20181123210601.aar')
+    // weichat
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+
+}
