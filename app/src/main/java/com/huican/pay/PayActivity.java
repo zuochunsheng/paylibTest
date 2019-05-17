@@ -208,14 +208,16 @@ public class PayActivity extends AppCompatActivity  implements View.OnClickListe
             return;
         }
         String body = "test";
+        String sellerId = "hksandbox_3832@alitest.com";
+        String mid = "Test Merchant No1";
 
         PayHelper payHelper = new PayHelper.Builder()
                 .setPayMethod(payWay)
-                .setSubject("alipay testing")
-                .setBody("test")
-                .setTotalAmount("0.01")
-                .setMid("Test Merchant No1")
-                .setSeller_id("hksandbox_3832@alitest.com")
+                .setSubject(subject)
+                .setBody(body)
+                .setTotalAmount(total_fee)
+                .setMid(mid)
+                .setSeller_id(sellerId)
                 .build();
 
         //payHelper.checkPermissions();
