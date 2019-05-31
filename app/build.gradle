@@ -64,26 +64,30 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
 
+    //使用快照版本
+    repositories { maven { url "https://oss.sonatype.org/content/repositories/snapshots/" } }
+    implementation 'com.github.zuochunsheng:paylibrary:1.0-SNAPSHOT'
 
-    implementation files('libs/payLibrary.aar')
+    //implementation files('libs/payLibrary.aar')
 
     /*================*/
-    /* Retrofit */
-    implementation 'com.squareup.retrofit2:retrofit:+'
-    implementation 'com.squareup.retrofit2:converter-gson:+'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:+'
-    /* RxJava or RxAndroid */
-    implementation 'io.reactivex.rxjava2:rxandroid:+'
-    implementation 'io.reactivex.rxjava2:rxjava:+'
-
-    implementation 'com.android.support:multidex:1.0.1'
-    //permission
-    implementation 'com.yanzhenjie:permission:2.0.0-rc12'
-
+//    /* Retrofit */
+//    implementation 'com.squareup.retrofit2:retrofit:+'
+//    implementation 'com.squareup.retrofit2:converter-gson:+'
+//    implementation 'com.squareup.retrofit2:adapter-rxjava2:+'
+//    /* RxJava or RxAndroid */
+//    implementation 'io.reactivex.rxjava2:rxandroid:+'
+//    implementation 'io.reactivex.rxjava2:rxjava:+'
+//
+//    implementation 'com.android.support:multidex:1.0.1'
+//    //permission
+//    implementation 'com.yanzhenjie:permission:2.0.0-rc12'
+//
+    // 本地库依然需要 添加依赖，远程库则不需要
     // 支付宝AAR  hk
     implementation files('libs/alipaySdk-15.5.9-20181123210601.aar')
-    // weichat
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+//    // weichat
+//    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
 
 
